@@ -1,0 +1,6 @@
+#ifndef SGM_SOURCE_PATH_H
+#define SGM_SOURCE_PATH_H
+
+#define SGM_SRC_PATH "${CMAKE_CURRENT_SOURCE_DIR}/sgm.cl"
+
+#endif
