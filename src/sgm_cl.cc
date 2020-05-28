@@ -728,7 +728,7 @@ void StereoSGMCL::PostProcess(void* dest){
         size_t off_v = i * properties_->width;
         for(int j=0; j<properties_->width; j++){
             float d = disp_refined[off_v + j];
-            if(d < 4.0f){
+            if(d < 0.0f){
                 depth[off_v + j] = (ushort)0;
                 continue;
             }

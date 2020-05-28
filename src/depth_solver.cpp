@@ -304,13 +304,13 @@ void ImplSGMCL::Run(cv::Mat &result){
         if(cur_f->empty())
             return;
 
-        Eigen::Matrix4f pose_cur = Eigen::Matrix4f(cur_f->pose0());
+        Eigen::Matrix4f pose_cur = Eigen::Matrix4f(cur_f->pose0()).inverse();
         Eigen::Vector3f tc = pose_cur.block<3,1>(0,3);
 
         for(auto ref_f = cur_f + 1; ref_f != buff_.rend(); ref_f++){
             if(ref_f->empty())
                 continue;
-            Eigen::Matrix4f pose_ref = Eigen::Matrix4f(ref_f->pose0());
+            Eigen::Matrix4f pose_ref = Eigen::Matrix4f(ref_f->pose0()).inverse();
             const Eigen::Vector3f& tr = pose_ref.block<3,1>(0, 3);
             float base_length = (tr - tc).norm();
             if(base_length > min_baseline){
